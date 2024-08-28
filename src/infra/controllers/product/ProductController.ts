@@ -10,7 +10,7 @@ export class ProductController {
   async create (req: Request, res: Response) {
     await this.productRepository.create(req.body)
 
-    res.sendStatus(200)
+    res.sendStatus(201)
   }
 
   async findMany (req: Request, res: Response) {

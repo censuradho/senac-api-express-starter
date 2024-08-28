@@ -43,3 +43,37 @@ Agora, se acessar o path `http://localhost:3333`, devera aparecer a seguinte men
 ```json
 { "ok": "server is on" }
 ```
+
+## END Points 
+
+### Listar produtos
+
+
+Endpoint: `GET /product`
+
+### Criar produtos
+
+Endpoint: `POST /product`
+
+Body:
+
+```json
+{
+  "category:" "string",
+  "name:" "string",
+  "value:" 1
+}
+```
+
+### Buscar pelo nome do produto
+
+Endpoint: `POST /product?name=nome_do_produto`
+
+### Buscar pela categoria do produto
+
+Endpoint: `POST /product?category=nome_da_categoria`
+
+
+### Deletar um produto produto
+
+Endpoint: `POST /product/id_do_produto`

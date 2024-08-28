@@ -67,13 +67,13 @@ Body:
 
 ### Buscar pelo nome do produto
 
-Endpoint: `POST /product?name=nome_do_produto`
+Endpoint: `GET /product?name=nome_do_produto`
 
 ### Buscar pela categoria do produto
 
-Endpoint: `POST /product?category=nome_da_categoria`
+Endpoint: `GET /product?category=nome_da_categoria`
 
 
 ### Deletar um produto produto
 
-Endpoint: `POST /product/id_do_produto`
+Endpoint: `DELETE /product/id_do_produto`

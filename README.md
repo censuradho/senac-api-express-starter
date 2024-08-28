@@ -74,6 +74,20 @@ Endpoint: `GET /product?name=nome_do_produto`
 Endpoint: `GET /product?category=nome_da_categoria`
 
 
-### Deletar um produto produto
+### Deletar um produto 
 
 Endpoint: `DELETE /product/id_do_produto`
+
+### Atualizar o produto pelo id
+
+Endpoint: `PUT /product/id_do_produto`
+
+Body:
+
+```json
+{
+  "category:" "string",
+  "name:" "string",
+  "value:" 1
+}
+```

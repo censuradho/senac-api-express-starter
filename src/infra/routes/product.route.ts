@@ -13,6 +13,7 @@ productRouter.post('/product', productBodyValidation, controller.create.bind(con
 productRouter.get('/product', controller.findMany.bind(controller))
 productRouter.get('/product/:id', controller.findById.bind(controller))
 productRouter.delete('/product/:id', controller.delete.bind(controller))
+productRouter.put('/product/:id', productBodyValidation, controller.update.bind(controller))
 productRouter.get('/product/category/:category', controller.findById.bind(controller))
 
 export {

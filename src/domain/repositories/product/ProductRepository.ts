@@ -28,6 +28,7 @@ export class ProductRepository implements IProductRepository {
           
           if (hasCategoryQuery) return product.category === query.category
           if (hasNameQuery) return  product.name.includes(query.name!)
+          return true
         }
       )
   }
@@ -55,13 +56,14 @@ export class ProductRepository implements IProductRepository {
       'Product not found'
     )
 
+
     this.database.product.nodes = this.database.product.nodes.map(
       product => product.id === id 
-      ? Object.assign(product, {
-        ...payload,
-        id: product.id
-      })
-      : product 
+        ? ({
+          ...payload,
+          id: product.id
+        })
+        : product 
     )
   }
 }

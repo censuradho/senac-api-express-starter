@@ -58,6 +58,9 @@ export class ProductController {
     try {
       const id = Number(req.params.id)
       await this.productRepository.update(id, req.body)
+
+      return res.sendStatus(200)
+
     } catch (error: any) {
       if (error instanceof HttpException) {
         return res.status(error.status).json({ message: error.message })

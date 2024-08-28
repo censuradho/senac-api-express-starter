@@ -17,7 +17,7 @@ Após concluir as operações, refatore o código separando as funções em um o
 Crie também um readme.md explicando a aplicação, assim como mostrando como executar.
 
 
-## Getting start
+## Getting started
 
 ### Requisitos
 

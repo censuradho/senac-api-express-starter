@@ -7,4 +7,5 @@ export interface IProductRepository {
   findMany (query: ProductQuery): Promise<ProductEntity[]>
   findById (id: number): Promise<ProductEntity | undefined>
   delete (id: number): Promise<void>
+  update (id: number, payload: CreateProductDTO): Promise<void>
 }

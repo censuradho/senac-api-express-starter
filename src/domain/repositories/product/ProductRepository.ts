@@ -2,6 +2,7 @@ import { Database } from '@/domain/entities/Database';
 import { IProductRepository } from './IProductRepository';
 import { CreateProductDTO, ProductQuery } from './Product.dto';
 import { ProductEntity } from '@/domain/entities/Product';
+import { HttpException } from '@/domain/models/HttpException';
 
 export class ProductRepository implements IProductRepository {
   constructor (private database: Database) {}
@@ -32,10 +33,35 @@ export class ProductRepository implements IProductRepository {
   }
 
   async findById(id: number): Promise<ProductEntity | undefined> {
-    return this.database.product.nodes.find(product => product.id === id)
+    const result = this.database.product.nodes.find(product => product.id === id)
+
+    if (!result) throw new HttpException(404, 'Product not found')
+
+    return result
   }
 
   async delete (id: number) {
     this.database.product.nodes = this.database.product.nodes.filter(product => product.id !== id) 
+  }
+
+  async update (id: number, payload: CreateProductDTO) {
+    const productExist = this.database
+    .product
+    .nodes
+    .find(product => product.id === id)
+
+    if (!productExist) throw new HttpException(
+      404,
+      'Product not found'
+    )
+
+    this.database.product.nodes = this.database.product.nodes.map(
+      product => product.id === id 
+      ? Object.assign(product, {
+        ...payload,
+        id: product.id
+      })
+      : product 
+    )
   }
 }

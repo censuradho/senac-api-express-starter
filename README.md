@@ -41,5 +41,5 @@ $ npm run dev
 Agora, se acessar o path `http://localhost:3333`, devera aparecer a seguinte mensagem:
 
 ```json
-{ ok: 'server is on' }
+{ "ok": "server is on" }
 ```

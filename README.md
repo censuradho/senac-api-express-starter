@@ -26,13 +26,13 @@ Crie também um readme.md explicando a aplicação, assim como mostrando como ex
 
 ### Instalar ambiente
 
-Na raiz do projeto, rode o comando 
+Após instalar os requisitos a cima, Na raiz do projeto, rode o comando 
 
 ```bash
 $ npm i
 ```
 
-Após a instalação, rode o ambiente de desenvolvimento
+Com o projeto ja instalado, rode o ambiente de desenvolvimento
 
 ```bash
 $ npm run dev

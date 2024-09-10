@@ -1,3 +1,4 @@
+import { RuleLevel } from './../../../../node_modules/@typescript-eslint/utils/dist/ts-eslint/Config.d';
 /* eslint-disable @typescript-eslint/no-explicit-any */
  
 import { CreateProductDTO } from '@/domain/dto/Product.dto';
@@ -23,6 +24,21 @@ describe('ProductRepository suit', () => {
 
   const repository = new ProductRepository(database)
 
+  
+  it('Should create a product entry', async () => {
+    const payload: CreateProductDTO = {
+      category: 'category',
+      name: 'teste',
+      value: 1
+    }
+
+    const previousProductAmount = database.product.nodes.length
+
+    await repository.create(payload)
+    
+    expect(database.product.nodes.length).toBe(previousProductAmount + 1)
+  })
+  
   it('Should return a product by id', async () => {
     const product = await repository.findById(database.product.lastId)
 
@@ -33,18 +49,6 @@ describe('ProductRepository suit', () => {
       const product = await repository.findById(123123123123)
      
       expect(product).toBeFalsy()
-  })
-
-  it('Should create a product entry', async () => {
-    const payload: CreateProductDTO = {
-      category: 'category',
-      name: 'teste',
-      value: 1
-    }
-
-    const id = await repository.create(payload)
-    
-    expect(id).toBeTruthy()
   })
 
   it('Should find a list of products', async () => {

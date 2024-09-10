@@ -91,11 +91,6 @@ Body:
   "value:" 1
 }
 ```
-
-## Estrutura
-
-
-
 ## Scripts
 
 - Rodar o ambiente de desenvolvimento: `npm run dev`

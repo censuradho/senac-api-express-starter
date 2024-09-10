@@ -91,3 +91,13 @@ Body:
   "value:" 1
 }
 ```
+
+## Estrutura
+
+
+
+## Scripts
+
+- Rodar o ambiente de desenvolvimento: `npm run dev`
+- Rodar os testes: `npm run test`
+- Coverage de testes: `npm run coverage`

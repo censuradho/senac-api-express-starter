@@ -37,6 +37,8 @@ export class ProductController {
   
       const result = await this.productRepository.findById(id)
         
+      if (!result)  return res.status(400).json({ message: 'Product not found' })
+
       return res.json(result)
     } catch (error: any) {
       if (error instanceof HttpException) {

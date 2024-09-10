@@ -7,7 +7,7 @@ import { HttpException } from '@/domain/models/HttpException';
 export class ProductRepository implements IProductRepository {
   constructor (private database: Database) {}
 
-  async create (payload: CreateProductDTO) {
+  async create (payload: CreateProductDTO): Promise<number> {
     const id = this.database.product.lastId + 1
 
     const entity: ProductEntity = {
@@ -17,12 +17,13 @@ export class ProductRepository implements IProductRepository {
 
    this.database.product.nodes.push(entity)
    this.database.product.lastId = id
+   return Promise.resolve(id)
   }
 
-  async findMany(query: ProductQuery): Promise<ProductEntity[]> {
+  async findMany(query?: ProductQuery): Promise<ProductEntity[]> {
       return this.database.product.nodes.filter(product => {
-          const hasCategoryQuery = !!query.category
-          const hasNameQuery = !!query.name
+          const hasCategoryQuery = !!query?.category
+          const hasNameQuery = !!query?.name
 
           if (hasCategoryQuery && hasNameQuery) return product.category === query.category && product.name.includes(query.name!)
           
@@ -36,13 +37,14 @@ export class ProductRepository implements IProductRepository {
   async findById(id: number): Promise<ProductEntity | undefined> {
     const result = this.database.product.nodes.find(product => product.id === id)
 
-    if (!result) throw new HttpException(404, 'Product not found')
-
     return result
   }
 
   async delete (id: number) {
-    this.database.product.nodes = this.database.product.nodes.filter(product => product.id !== id) 
+    this.database.product.nodes = this.database.product.nodes.filter(product => product.id !== id)
+    const lastProduct = this.database.product.nodes[this.database.product.nodes.length - 1]
+
+    this.database.product.lastId = lastProduct.id
   }
 
   async update (id: number, payload: CreateProductDTO) {

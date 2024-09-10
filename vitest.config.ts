@@ -9,8 +9,9 @@ export default defineConfig({
     coverage: {
       reporter: ['text', 'json', 'html'],
     },
+    include: ['**/*/*.test.ts']
   },
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, 'src') }]
-  }
+  },
 });

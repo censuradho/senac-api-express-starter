@@ -3,7 +3,7 @@ import { CreateProductDTO, ProductQuery } from '../../dto/Product.dto';
 
  
 export interface IProductRepository {
-  create (payload: CreateProductDTO): Promise<void>
+  create (payload: CreateProductDTO): Promise<number>
   findMany (query: ProductQuery): Promise<ProductEntity[]>
   findById (id: number): Promise<ProductEntity | undefined>
   delete (id: number): Promise<void>

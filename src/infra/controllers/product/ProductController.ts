@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ProductQuery } from '@/domain/dto/Product.dto';
 import { HttpException } from '@/domain/models/HttpException';
 import { IProductRepository } from '@/domain/repositories/product/IProductRepository';
-import { ProductQuery } from '@/domain/repositories/product/Product.dto';
 import { Request, Response } from 'express';
 
 export class ProductController {

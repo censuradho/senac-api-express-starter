@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from 'express';
-import { CreateProductDTO } from './Product.dto';
 import { validateOrReject } from 'class-validator';
+import { CreateProductDTO } from '../dto/Product.dto';
 
 export async function productBodyValidation (req: Request, res: Response, next: NextFunction) {
   try {

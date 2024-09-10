@@ -1,5 +1,5 @@
 import { ProductEntity } from '@/domain/entities/Product';
-import { CreateProductDTO, ProductQuery } from './Product.dto';
+import { CreateProductDTO, ProductQuery } from '../../dto/Product.dto';
 
  
 export interface IProductRepository {

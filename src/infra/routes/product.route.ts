@@ -1,8 +1,8 @@
-import { productBodyValidation } from '@/domain/repositories/product/product.validation';
 import { ProductRepository } from '@/domain/repositories/product/ProductRepository';
 import { database } from '@/shared/db';
 import { Router } from 'express';
 import { ProductController } from '../controllers/product/ProductController';
+import { productBodyValidation } from '@/domain/middleware/product.validation';
 
 const productRouter = Router()
 

@@ -1,6 +1,6 @@
 import { Database } from '@/domain/entities/Database';
 import { IProductRepository } from './IProductRepository';
-import { CreateProductDTO, ProductQuery } from './Product.dto';
+import { CreateProductDTO, ProductQuery } from '../../dto/Product.dto';
 import { ProductEntity } from '@/domain/entities/Product';
 import { HttpException } from '@/domain/models/HttpException';
 

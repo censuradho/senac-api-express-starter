@@ -23,7 +23,6 @@ describe('ProductRepository suit', () => {
 
   const repository = new ProductRepository(database)
 
-  
   it('Should create a product entry', async () => {
     const payload: CreateProductDTO = {
       category: 'category',
@@ -44,10 +43,10 @@ describe('ProductRepository suit', () => {
     expect(product).toBeTruthy()
   })
 
-  it('Should throw an error if product searched is not found', async () => {
+  it('Should return undefined if passed an product id witch is not find', async () => {
       const product = await repository.findById(123123123123)
      
-      expect(product).toBeFalsy()
+      expect(product).toBeUndefined()
   })
 
   it('Should find a list of products', async () => {

@@ -1,11 +1,10 @@
-import { RuleLevel } from './../../../../node_modules/@typescript-eslint/utils/dist/ts-eslint/Config.d';
 /* eslint-disable @typescript-eslint/no-explicit-any */
  
 import { CreateProductDTO } from '@/domain/dto/Product.dto';
 import { Database } from '@/domain/entities/Database';
+import { HttpException } from '@/domain/models/HttpException';
 import { describe, expect, it } from 'vitest';
 import { ProductRepository } from './ProductRepository';
-import { HttpException } from '@/domain/models/HttpException';
 
 describe('ProductRepository suit', () => {
   const database: Database = {

@@ -38,6 +38,8 @@ Com o projeto ja instalado, rode o ambiente de desenvolvimento
 $ npm run dev
 ```
 
+Copiar o arquivo `.env.exemple`e renomealo para `.env`
+
 Agora, se acessar o path `http://localhost:3333`, devera aparecer a seguinte mensagem:
 
 ```json

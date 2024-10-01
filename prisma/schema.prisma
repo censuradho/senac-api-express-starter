@@ -19,5 +19,14 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
+  favorites Favorite[]
+
   @@map("users")
+}
+
+model Favorite {
+  id Int @id @default(autoincrement())
+  movie_id String
+  user_id String
+  user User @relation(fields: [user_id], references: [id])
 }

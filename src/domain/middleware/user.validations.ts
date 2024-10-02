@@ -22,6 +22,8 @@ export async function createUserValidation (req: Request, res: Response, next: N
 
     await validateOrReject(payload)
 
+    req.body = payload
+
     next()
   } catch (error: any) {
     return res.status(400).json({

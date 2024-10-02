@@ -4,6 +4,8 @@ import { CreateUserDTO } from '@/domain/dto/User.dto';
 import { SignInWithEmailAndPAsswordDTO } from '@/domain/dto/Auth.dto';
 import { HttpException } from '@/domain/models/HttpException';
 import { compare } from 'bcrypt'
+import { Jwt } from '@/shared/jwt';
+import { JWTPayload } from '@/domain/models/JWTPayload';
 
 export class AuthRepository implements IAuthRepository {
   constructor (
@@ -22,5 +24,11 @@ export class AuthRepository implements IAuthRepository {
     const isPasswordMatched = await compare(payload.password, user.password)
 
     if (!isPasswordMatched) throw new HttpException(401, 'INCORRECT_EMAIL_OR_PASSWORD')
+
+      const token = Jwt.generateAccessToken(
+        new JWTPayload(user.id)
+      )
+
+      return token
   }
 }

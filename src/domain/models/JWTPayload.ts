@@ -1,3 +1,3 @@
 export class JWTPayload {
-  user_id: string
+  constructor (public user_id: string) {}
 }

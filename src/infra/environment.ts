@@ -1,5 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-require('dotenv').config()
+ 
+import { config } from 'dotenv'
+
+config()
 
 export const environment = {
   PORT: process.env.PORT,

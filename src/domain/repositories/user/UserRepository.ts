@@ -1,14 +1,25 @@
-import bcrypt from 'bcrypt'
-import { randomUUID } from 'node:crypto'
+import bcrypt from 'bcrypt';
+import { randomUUID } from 'node:crypto';
 
 import { CreateUserDTO } from '@/domain/dto/User.dto';
-import { IUserRepository } from './IUserRepository';
 import { Database } from '@/domain/entities/Database';
-import { HttpException } from '@/domain/models/HttpException';
 import { UserEntity } from '@/domain/entities/User.entity';
+import { HttpException } from '@/domain/models/HttpException';
+import { IUserRepository } from './IUserRepository';
 
 export class UserRepository implements IUserRepository {
   constructor (private database: Database) {}
+
+  async findByEmail(email: string): Promise<UserEntity | undefined> {
+    return Object
+      .values(this.database.user)
+      .find(value => value.email === email)
+  }
+
+  async findById(id: string): Promise<UserEntity | undefined> {
+    return this.database.user[id]
+  }
+
 
   async create (payload: CreateUserDTO) {
     const userAlreadyExist = Object

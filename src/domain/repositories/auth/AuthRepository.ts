@@ -6,6 +6,7 @@ import { HttpException } from '@/domain/models/HttpException';
 import { compare } from 'bcrypt'
 import { Jwt } from '@/shared/jwt';
 import { JWTPayload } from '@/domain/models/JWTPayload';
+import { ERRORS } from '@/shared/errors';
 
 export class AuthRepository implements IAuthRepository {
   constructor (
@@ -19,14 +20,16 @@ export class AuthRepository implements IAuthRepository {
   async signInWithEmailAndPassword (payload: SignInWithEmailAndPAsswordDTO) {
     const user = await this.userRepository.findByEmail(payload.email)
 
-    if (!user) throw new HttpException(404, 'USER_NOT_FOUND')
+    if (!user) throw new HttpException(404, ERRORS.USER.NOT_FOUND)
 
     const isPasswordMatched = await compare(payload.password, user.password)
 
-    if (!isPasswordMatched) throw new HttpException(401, 'INCORRECT_EMAIL_OR_PASSWORD')
+    if (!isPasswordMatched) throw new HttpException(401, ERRORS.USER.INCORRECT_PASSWORD_OR_EMAIL)
+
+      const jwtPayload = new JWTPayload(user.id)
 
       const token = Jwt.generateAccessToken(
-        new JWTPayload(user.id)
+        jwtPayload
       )
 
       return token

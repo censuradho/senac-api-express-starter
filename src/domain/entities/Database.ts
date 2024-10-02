@@ -8,10 +8,8 @@ export interface Database {
     nodes: ProductEntity[]
   },
   favorites: {
-    entries: {
-      [user_id: string]: {
-        nodes: FavoriteEntity[]
-      }
+    [user_id: string]: {
+      nodes: FavoriteEntity[]
     }
   }
   user: {

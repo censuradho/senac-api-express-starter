@@ -5,11 +5,6 @@ export const database: Database = {
     lastId: 0,
     nodes: []
   },
-  favorites: {
-    entries: {
-      ['0']: {
-        nodes: []
-      }
-    }
-  }
+  favorites: {},
+  user: {}
 }

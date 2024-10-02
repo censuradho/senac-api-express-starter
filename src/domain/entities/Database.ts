@@ -1,5 +1,6 @@
 import { FavoriteEntity } from './FavoriteEntity'
 import { ProductEntity } from './Product'
+import { UserEntity } from './User.entity'
 
 export interface Database {
   product: {
@@ -12,5 +13,8 @@ export interface Database {
         nodes: FavoriteEntity[]
       }
     }
+  }
+  user: {
+    [user_id: string]: UserEntity
   }
 }

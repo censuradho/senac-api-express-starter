@@ -22,10 +22,7 @@ export class UserRepository implements IUserRepository {
 
 
   async create (payload: CreateUserDTO) {
-    const userAlreadyExist = Object
-      .values(
-        this.database.user
-      ).find(value => value.email === payload.email)
+    const userAlreadyExist = await this.findByEmail(payload.email)
 
       const { password, ...otherPayload } = payload
 

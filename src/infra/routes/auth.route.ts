@@ -12,7 +12,8 @@ const userRepository = new UserRepository(database)
 const repository = new AuthRepository(userRepository)
 const controller = new AuthController(repository)
 
-authRoute.post('/auth/login', jwtMiddleware, signInWithEmailAndPasswordRequestBodyValidation, controller.signInWithEmailAndPassword.bind(controller))
+authRoute.post('/auth/login', signInWithEmailAndPasswordRequestBodyValidation, controller.signInWithEmailAndPassword.bind(controller))
+authRoute.get('/auth/me', jwtMiddleware, controller.me.bind(controller))
 
 export { 
   authRoute

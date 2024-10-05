@@ -1,11 +1,12 @@
 // custom.d.ts
-import { JWTPayload } from '@/domain/models/JWTPayload';
 import 'express';
+import { JWTPayload } from '../../domain/models/JWTPayload';
+
 
 declare global {
   namespace Express {
     interface Request {
-      user?: JWTPayload
+      user?: JWTPayload;
     }
   }
 }

@@ -27,6 +27,13 @@ export class AuthController {
       console.log(error)
       return res.sendStatus(500)    
     }
+  }
 
+  async me (req: Request, res: Response) {
+    if (!req?.user) return
+
+    const user = await this.authRepository.me(req?.user?.user_id)
+
+    return res.json(user)
   }
 }

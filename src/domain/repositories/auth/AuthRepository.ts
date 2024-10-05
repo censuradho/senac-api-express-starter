@@ -7,6 +7,7 @@ import { compare } from 'bcrypt'
 import { Jwt } from '@/shared/jwt';
 import { JWTPayload } from '@/domain/models/JWTPayload';
 import { ERRORS } from '@/shared/errors';
+import { UserModel } from '@/domain/models/UserModel';
 
 export class AuthRepository implements IAuthRepository {
   constructor (
@@ -33,5 +34,13 @@ export class AuthRepository implements IAuthRepository {
       )
 
       return token
+  }
+
+  async me (id: string) {
+    const user=  await this.userRepository.findById(id)
+
+    if (!user) return null
+
+    return new UserModel(user)
   }
 }

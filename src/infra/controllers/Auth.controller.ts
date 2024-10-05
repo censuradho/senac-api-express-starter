@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { AuthRepository } from '@/domain/repositories/auth/AuthRepository';
 import { HttpException } from '@/domain/models/HttpException';
 import { addDays } from 'date-fns'
+import { ERRORS } from '@/shared/errors';
 
 export class AuthController {
   constructor (private authRepository: AuthRepository) {}
@@ -30,7 +31,9 @@ export class AuthController {
   }
 
   async me (req: Request, res: Response) {
-    if (!req?.user) return
+    if (!req?.user) return res.status(404).json({
+      message: ERRORS.USER.NOT_FOUND
+    })
 
     const user = await this.authRepository.me(req?.user?.user_id)
 

@@ -8,7 +8,7 @@ export async function jwtMiddleware (req: Request<any, any, JWTPayload>, res: Re
   try {
     const token = req.cookies?.auth
 
-    console.log(token)
+
     if (!token) return res.status(401).json({
       message: ERRORS.AUTH.PROVIDE_TOKEN
     })
@@ -19,6 +19,7 @@ export async function jwtMiddleware (req: Request<any, any, JWTPayload>, res: Re
 
     next()
   } catch (error: any) {
+    console.log(error)
     if (error instanceof JsonWebTokenError) {
       req['user'] = undefined
 

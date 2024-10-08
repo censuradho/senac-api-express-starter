@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
  
 import { CreateProductDTO } from '@/domain/dto/Product.dto';
 import { Database } from '@/domain/entities/Database';
@@ -8,18 +8,8 @@ import { ProductRepository } from './ProductRepository';
 
 describe('ProductRepository suit', () => {
   const database: Database = {
-    product: {
-      lastId: 1,
-      nodes: [
-        {
-          category: 'category',
-          id: 1,
-          name: 'name',
-          value: 2
-        }
-      ]
-    }
-  }
+
+  } as Database
 
   const repository = new ProductRepository(database)
 

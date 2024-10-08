@@ -1,9 +1,11 @@
+import { Router } from 'express';
+
 import { MovieRepository } from '@/domain/repositories/movies/MovieRepository';
 import { GhibliService } from '@/domain/services/ghibli';
-import { Router } from 'express';
-import { MovieController } from '../controllers/movie/MovieController';
-import { database } from '@/shared/db';
 import { jwtMiddleware } from '@/domain/middleware/auth.middleware';
+
+import { MovieController } from '@/infra/controllers/movie/movie.controller';
+import { database } from '@/shared/db';
 
 const movieRoute = Router()
 

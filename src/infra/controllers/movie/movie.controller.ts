@@ -6,18 +6,29 @@ export class MovieController {
   constructor (private movieRepository: MovieRepository) {}
 
   async findMany (req: Request, res: Response) {
-    const response = await this.movieRepository.findMany()
+    try {
+      const response = await this.movieRepository.findMany()
 
-    return res.json(response)
+      return res.json(response)
+    } catch (error: any) {
+      console.log(error)
+      return res
+        .sendStatus(500)
+    }
   }
 
   async like (req: Request, res: Response) {
-    const user = req?.user as JWTPayload
-    const movieId = req.params.id
-
-    this.movieRepository.like(movieId, user.user_id)
-
-    return res.sendStatus(201)
+    try {
+      const user = req?.user as JWTPayload
+      const movieId = req.params.id
+  
+      this.movieRepository.like(movieId, user.user_id)
+  
+      return res.sendStatus(201)
+    } catch (error: any) {
+      console.log(error)
+      return res.sendStatus(500)
+    }
   }
 
   async favorites (req: Request, res: Response) {

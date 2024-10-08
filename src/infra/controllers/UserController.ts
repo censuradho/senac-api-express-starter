@@ -5,13 +5,14 @@ import { HttpException } from '@/domain/models/HttpException';
 export class UserController {
   constructor (private userRepository: UserRepository) {}
 
-  create (req: Request, res: Response) {
+  async create (req: Request, res: Response) {
     try {
       
-      this.userRepository.create(req.body)
+      await this.userRepository.create(req.body)
 
       res.sendStatus(201)
     } catch (error: any) {
+      console.log(error)
       if (error instanceof HttpException) {
         return res.status(error.status).json({ message: error.message })
       }

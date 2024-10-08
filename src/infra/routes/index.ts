@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { productRouter } from './product.route';
 import { healthCheckRouter } from './healthcheck.route';
-import { movieRoute } from './MovieRoute';
+import { movieRoute } from './movie.route';
 import { userRoute } from './user.route';
 import { authRoute } from './auth.route';
 

@@ -38,5 +38,8 @@ export class UserRepository implements IUserRepository {
       }
 
       this.database.user[id] = user
+      this.database.favorites[id] = {
+        nodes: []
+      }
   }
 }

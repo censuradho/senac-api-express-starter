@@ -10,23 +10,9 @@ export class GhibliFilmModel {
   rt_score: string
   image: string
   movie_banner: string
-}
 
-export class GhibliFilmModelMapper implements GhibliFilmModel {
-  id: string
-  title: string
-  original_title: string
-  description: string
-  director: string
-  producer: string
-  release_date: string
-  running_time: string
-  rt_score: string
-  image: string
-  movie_banner: string
-  
   constructor (data: GhibliFilmModel) {
-    Object.assign(this, {
+    const payload: GhibliFilmModel = {
       id: data.id,
       title: data.title,
       original_title: data.original_title,
@@ -38,6 +24,8 @@ export class GhibliFilmModelMapper implements GhibliFilmModel {
       rt_score: data.rt_score,
       image: data.image,
       movie_banner: data.movie_banner,
-    })
+    }
+
+    Object.assign(this, payload)
   }
 }

@@ -4,6 +4,6 @@ import { UserModel } from '@/domain/models/UserModel';
 
 export interface IAuthRepository {
   signUpWithEmailAndPassword (payload: CreateUserDTO): Promise<void>
-  me(id: string): Promise<UserModel | null>
   signInWithEmailAndPassword (payload: SignInWithEmailAndPAsswordDTO): Promise<string>
+  me(id: string): Promise<UserModel | null>
 }

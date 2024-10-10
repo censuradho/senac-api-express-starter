@@ -32,6 +32,7 @@ export class AuthController {
       res.cookie('auth', token, {
         secure: process.env.NODE_ENV !== 'development',
         httpOnly: true,
+        sameSite: 'strict',
         expires: addDays(new Date(), 2)
       })
 
@@ -48,11 +49,15 @@ export class AuthController {
   }
 
   async me (req: Request, res: Response) {
-    if (!req?.user) return res.status(404).json({
-      message: ERRORS.USER.NOT_FOUND
+    if (!req?.user) return res.status(401).json({
+      message: ERRORS.AUTH.PROVIDE_TOKEN
     })
 
     const user = await this.authRepository.me(req?.user?.user_id)
+
+    if (!user) return res.status(401).json({
+      message: ERRORS.AUTH.PROVIDE_TOKEN
+    })
 
     return res.json(user)
   }

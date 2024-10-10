@@ -4,7 +4,7 @@ import { MovieRepository } from '@/domain/repositories/movies/MovieRepository';
 import { GhibliService } from '@/domain/services/ghibli';
 import { jwtMiddleware } from '@/domain/middleware/auth.middleware';
 
-import { MovieController } from '@/infra/controllers/movie/movie.controller';
+import { MovieController } from '@/infra/controllers/movie.controller';
 import { database } from '@/shared/db';
 
 const movieRoute = Router()

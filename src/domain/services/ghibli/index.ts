@@ -1,6 +1,6 @@
-import { GhibliFilmModel, GhibliFilmModelMapper } from '@/domain/models/ghibli/GhibliFilmModel';
+import { GhibliFilmModel } from '@/domain/models/ghibli/GhibliFilmModel';
 import axios from 'axios';
-import https from 'https'
+import https from 'https';
 
 const agent = new https.Agent({  
   rejectUnauthorized: false
@@ -15,6 +15,8 @@ export class GhibliService {
   async findFilms () {
     const { data } = await this.http.get<GhibliFilmModel[]>('/films')
   
-    return data.map(value => new GhibliFilmModelMapper(value))
+    return data.map(value => 
+      new GhibliFilmModel(value)
+    )
   }
 }

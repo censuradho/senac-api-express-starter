@@ -27,13 +27,13 @@ export class AuthRepository implements IAuthRepository {
 
     if (!isPasswordMatched) throw new HttpException(401, ERRORS.USER.INCORRECT_PASSWORD_OR_EMAIL)
 
-      const jwtPayload = new JWTPayload(user.id)
+    const jwtPayload = new JWTPayload(user.id)
 
-      const token = Jwt.generateAccessToken(
-        jwtPayload
-      )
+    const token = Jwt.generateAccessToken(
+      jwtPayload
+    )
 
-      return token
+    return token
   }
 
   async me (id: string) {

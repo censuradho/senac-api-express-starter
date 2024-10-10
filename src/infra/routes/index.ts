@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import { productRouter } from './product.route';
 import { healthCheckRouter } from './healthcheck.route';
 import { movieRoute } from './movie.route';
 import { authRoute } from './auth.route';
 
 const router = Router()
 
-router.use(productRouter)
 router.use(movieRoute)
 router.use(authRoute)
 router.use(healthCheckRouter)

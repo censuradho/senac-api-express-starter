@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { NextFunction, Request, Response } from 'express'
 import { CreateUserDTO } from '../dto/User.dto'
 import { validateOrReject } from 'class-validator'

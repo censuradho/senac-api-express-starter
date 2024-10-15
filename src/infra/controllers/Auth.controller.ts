@@ -48,6 +48,11 @@ export class AuthController {
     }
   }
 
+  async signOut (req: Request, res: Response) {
+    res.clearCookie('auth')
+    return res.sendStatus(200)
+  }
+
   async me (req: Request, res: Response) {
     if (!req?.user) return res.status(401).json({
       message: ERRORS.AUTH.PROVIDE_TOKEN

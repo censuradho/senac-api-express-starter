@@ -34,6 +34,12 @@ authRoute.post(
   controller.signUpWithEmailAndPAssword.bind(controller)
 )
 
+
+authRoute.get(
+  '/auth/sign-out', 
+  controller.signOut.bind(controller)
+)
+
 export { 
   authRoute
 }
